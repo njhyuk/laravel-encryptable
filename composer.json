@@ -1,0 +1,14 @@
+{
+    "name": "njhyuk/laravel-encryptable",
+    "description": "Laravel eloquent automatic encryption and decryption using mysql AES function.",
+    "require": {
+        "illuminate/database": "^5.7"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "njhyuk",
+            "email": "njh2239@gmail.com"
+        }
+    ]
+}
