@@ -2,6 +2,8 @@
 
 namespace Njhyuk\LaravelEncryptable;
 
+use Illuminate\Support\Facades\Config;
+
 trait Encryptable
 {
     /**
@@ -21,8 +23,8 @@ trait Encryptable
      */
     public function __construct()
     {
-        $this->encryptKey = config('auth.encrypt.key');
-        $this->encryptCipher = config('auth.encrypt.cipher');
+        $this->encryptKey = Config('encryptable.key');
+        $this->encryptCipher = Config('encryptable.cipher');
     }
 
     /**
