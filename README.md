@@ -1,6 +1,6 @@
 # Laravel Encryptable
 
-**This package is still in development and is not available.**
+**This package is still in development and is not available...**
 
 Laravel eloquent automatic encryption and decryption using mysql AES function.
 
