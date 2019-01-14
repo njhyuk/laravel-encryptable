@@ -4,6 +4,9 @@
     "require": {
         "illuminate/database": "^5.7"
     },
+    "autoload": {
+        "psr-4": {"Njhyuk//LaravelEncryptable//" :  "src"}
+    },
     "license": "MIT",
     "authors": [
         {
