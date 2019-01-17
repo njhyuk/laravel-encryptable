@@ -8,7 +8,7 @@ Laravel eloquent automatic encryption and decryption using mysql AES function.
 composer require njhyuk/laravel-encryptable
 ```
 
-## usage
+## Usage
 
 ### modify the Eloquent model to be applied.
 
