@@ -1,7 +1,5 @@
 # Laravel Encryptable
 
-**This package is still in development and is not available...**
-
 Laravel eloquent automatic encryption and decryption using mysql AES function.
 
 ## Installation
@@ -11,6 +9,10 @@ composer require njhyuk/laravel-encryptable
 ```
 
 ## usage
+
+### modify the Eloquent model to be applied.
+
+Use the `Njhyuk\LaravelEncryptable\Encryptable` trait and add your encryptable table columns.
 
 ```php
 <?php
@@ -26,6 +28,7 @@ class User extends Authenticatable
 
     /**
      * Encrypted columns
+     * 
      * @var array
      */
     protected $encryptable = [
