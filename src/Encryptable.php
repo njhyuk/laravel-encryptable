@@ -7,13 +7,6 @@ use Illuminate\Support\Facades\Config;
 trait Encryptable
 {
     /**
-     * Encrypted columns
-     *
-     * @var array
-     */
-    protected $encryptable = [];
-
-    /**
      * Get a new query builder instance for the connection.
      *
      * @return \Illuminate\Database\Query\Builder
