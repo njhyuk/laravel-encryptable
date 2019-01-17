@@ -12,7 +12,7 @@ composer require njhyuk/laravel-encryptable
 
 ### modify the Eloquent model to be applied.
 
-Use the `Njhyuk\LaravelEncryptable\Encryptable` trait and add your encryptable table columns.
+Use the `Njhyuk\LaravelEncryptable\Encryptable` trait and add columns to be encrypted.
 
 ```php
 <?php
