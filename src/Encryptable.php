@@ -7,25 +7,11 @@ use Illuminate\Support\Facades\Config;
 trait Encryptable
 {
     /**
-     * Cryptographic key
-     * @var string encryptKey
+     * Encrypted columns
+     *
+     * @var array
      */
-    private $encryptKey;
-
-    /**
-     * $encrypt cipher
-     * @var string encryptKey
-     */
-    private $encryptCipher;
-
-    /**
-     * Encryptable constructor.
-     */
-    public function __construct()
-    {
-        $this->encryptKey = Config('encryptable.key');
-        $this->encryptCipher = Config('encryptable.cipher');
-    }
+    protected $encryptable = [];
 
     /**
      * Get a new query builder instance for the connection.
@@ -37,7 +23,7 @@ trait Encryptable
         $connection = $this->getConnection();
 
         return new EncryptQueryBuilder(
-            $connection, $connection->getQueryGrammar(), $connection->getPostProcessor(), $this->encryptKey, $this->encryptable
+            $connection, $connection->getQueryGrammar(), $connection->getPostProcessor(), $this->getEncryptKey(), $this->encryptable
         );
     }
 
@@ -51,8 +37,8 @@ trait Encryptable
 
         $enc = \openssl_encrypt(
             $data,
-            $this->encryptCipher,
-            $this->encryptKey,
+            $this->getEncryptCipher(),
+            $this->getEncryptKey(),
             OPENSSL_RAW_DATA
         );
         return strtoupper(bin2hex($enc));
@@ -83,8 +69,8 @@ trait Encryptable
         $data = $this->hex2bin($data);
         $dec = \openssl_decrypt(
             $data,
-            $this->encryptCipher,
-            $this->encryptKey,
+            $this->getEncryptCipher(),
+            $this->getEncryptKey(),
             OPENSSL_RAW_DATA
         );
         return $dec;
@@ -96,7 +82,16 @@ trait Encryptable
      */
     public function getEncryptKey()
     {
-        return $this->encryptKey;
+        return Config('encryptable.key');
+    }
+
+    /**
+     * get encrypt cipher
+     * @return mixed
+     */
+    public function getEncryptCipher()
+    {
+        return Config('encryptable.cipher');
     }
 
     /**
