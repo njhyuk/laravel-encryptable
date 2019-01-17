@@ -15,5 +15,12 @@
             "name": "njhyuk",
             "email": "njh2239@gmail.com"
         }
-    ]
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Njhyuk\\LaravelEncryptable\\EncryptableProvider"
+            ]
+        }
+    }
 }
