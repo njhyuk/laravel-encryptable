@@ -1,14 +1,10 @@
 # Laravel Encryptable
 
-Automatically encrypt Laravel Eloquent Model columns using Mysql's AES functions.
-
-Database search is possible because it uses the Mysql's AES functions.
+Automatically encrypt Laravel Eloquent Model columns using Mysql's AES functions. Database search is possible because it uses the Mysql's AES functions.
 
 ## Notice
 
-Mysql's AES functions do not use initialization vectors.
-
-If you give up searching in Mysql, it is better to use a different solution.
+Mysql's AES functions do not use initialization vectors. If you give up searching in Mysql, it is better to use a different solution.
 
 ## Installation
 
