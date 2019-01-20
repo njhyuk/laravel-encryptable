@@ -6,7 +6,9 @@ It is possible to database search because it uses Mysql AES functions.
 
 ## Notice
 
-Mysql AES functions do not use initialization vectors. If you give up searching in Mysql, it is better to use a different solution.
+Mysql AES functions do not use initialization vectors.
+
+If you give up searching in Mysql, it is better to use a different solution.
 
 ## Installation
 
