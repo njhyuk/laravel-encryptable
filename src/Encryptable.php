@@ -16,12 +16,17 @@ trait Encryptable
         $connection = $this->getConnection();
 
         return new EncryptQueryBuilder(
-            $connection, $connection->getQueryGrammar(), $connection->getPostProcessor(), $this->getEncryptKey(), $this->encryptable
+            $connection,
+            $connection->getQueryGrammar(),
+            $connection->getPostProcessor(),
+            $this->getEncryptKey(),
+            $this->getEncryptable()
         );
     }
 
     /**
      * encrypt
+     *
      * @param $data
      * @return string
      */
@@ -39,6 +44,7 @@ trait Encryptable
 
     /**
      * hex to bin
+     *
      * @param $h
      * @return string|null
      */
@@ -54,6 +60,7 @@ trait Encryptable
 
     /**
      * decrypt
+     *
      * @param $data
      * @return bool|string
      */
@@ -71,6 +78,7 @@ trait Encryptable
 
     /**
      * get encrypt key
+     *
      * @return mixed
      */
     public function getEncryptKey()
@@ -80,6 +88,7 @@ trait Encryptable
 
     /**
      * get encrypt cipher
+     *
      * @return mixed
      */
     public function getEncryptCipher()
@@ -89,15 +98,17 @@ trait Encryptable
 
     /**
      * get encryptable
+     *
      * @return mixed
      */
     public function getEncryptable()
     {
-        return $this->encryptable;
+        return $this->encryptable ?? [];
     }
 
     /**
      * decrypt attribute
+     *
      * @param $key
      * @return string
      */
@@ -105,7 +116,7 @@ trait Encryptable
     {
         $value = parent::getAttribute($key);
 
-        if (isset($this->encryptable) && in_array($key, $this->encryptable) && (!is_null($value))) {
+        if (in_array($key, $this->getEncryptable()) && (!is_null($value))) {
             $value = $this->decrypt($value);
         }
 
@@ -114,13 +125,14 @@ trait Encryptable
 
     /**
      * encrypt attribute
+     *
      * @param $key
      * @param $value
      * @return mixed
      */
     public function setAttribute($key, $value)
     {
-        if (isset($this->encryptable) && in_array($key, $this->encryptable)) {
+        if (in_array($key, $this->getEncryptable())) {
             $value = $this->encrypt($value);
         }
 
