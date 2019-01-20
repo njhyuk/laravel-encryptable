@@ -1,6 +1,14 @@
 # Laravel Encryptable
 
-Laravel eloquent automatic encryption and decryption using mysql AES function.
+Automatically encrypt Laravel Eloquent Model columns using Mysql's AES functions.
+
+Database search is possible because it uses the Mysql's AES functions.
+
+## Notice
+
+Mysql's AES functions do not use initialization vectors.
+
+If you give up searching in Mysql, it is better to use a different solution.
 
 ## Installation
 
@@ -10,7 +18,7 @@ composer require njhyuk/laravel-encryptable
 
 ## Usage
 
-### modify the Eloquent model to be applied.
+### Specify the model's encryption columns
 
 Use the `Njhyuk\LaravelEncryptable\Encryptable` trait and add columns to be encrypted.
 
@@ -32,7 +40,26 @@ class User extends Authenticatable
      * @var array
      */
     protected $encryptable = [
-        'name'
+        'name',
+        'email'
     ];
 }    
+```
+
+## Inserting & Updating Models
+
+```php
+<?php
+
+$user = new User;
+$user->email = 'example@example.com'; //It is encrypted and stored.
+$user->save();
+```
+
+## Retrieving Models
+
+```php
+<?php
+
+User::where('email','like','%example%')->get(); //Encrypted data retrieval is possible.
 ```
