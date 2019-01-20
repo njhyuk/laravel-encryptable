@@ -12,8 +12,22 @@ If you give up searching in Mysql, it is better to use a different solution.
 
 ## Installation
 
+### Installing the package
+
 ```
 composer require njhyuk/laravel-encryptable
+```
+
+### Configuring the package
+
+```
+ php artisan vendor:publish --provider="Njhyuk\LaravelEncryptable\EncryptableProvider"
+```
+
+### Add encryption key in env file
+
+```
+ENCRYPTABLE_KEY=SetYour16ByteKey
 ```
 
 ## Usage
