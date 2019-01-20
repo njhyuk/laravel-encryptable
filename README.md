@@ -49,8 +49,6 @@ class User extends Authenticatable
 ## Inserting & Updating Models
 
 ```php
-<?php
-
 $user = new User;
 $user->email = 'example@example.com'; //It is encrypted and stored.
 $user->save();
@@ -59,7 +57,5 @@ $user->save();
 ## Retrieving Models
 
 ```php
-<?php
-
 User::where('email','like','%example%')->get(); //Encrypted data retrieval is possible.
 ```
